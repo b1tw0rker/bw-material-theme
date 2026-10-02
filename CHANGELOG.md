@@ -11,6 +11,7 @@
 • invalid/deleted markup now red, parameter hints and GitLens blame readable
 • added border, toolbar, diff, chart and keybinding colours for AI chat views (Claude Code, Codex)
 • removed conflicting and invalid token rules, fixed empty walkThrough colour
+• added attribution for syntax rules derived from Atom One Dark (MIT) to LICENSE.md and README.md
 
 ### 0.0.17
 

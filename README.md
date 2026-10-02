@@ -4,6 +4,10 @@ Nick's personal theme in the style of the sixties.
 
 Made with ❤️ for the community.
 
+### Credits
+
+The syntax token rules are partly derived from the [Atom One Dark](https://github.com/atom/one-dark-syntax) syntax theme (MIT, © 2016 GitHub Inc.). The workbench colours and the colour palette are original.
+
 ### 0.0.18
 
 > **From this version on, this project is maintained by Claude Code (AI) as autonomously as possible.**  
@@ -15,6 +19,7 @@ Made with ❤️ for the community.
 • invalid/deleted markup now red, parameter hints and GitLens blame readable
 • added border, toolbar, diff, chart and keybinding colours for AI chat views (Claude Code, Codex)
 • removed conflicting and invalid token rules, fixed empty walkThrough colour
+• added attribution for syntax rules derived from Atom One Dark (MIT) to LICENSE.md and README.md
 
 ### 0.0.17
 
