@@ -1,0 +1,10 @@
+*.psd
+*.vsix
+Notes.txt
+.vscode/**
+.env
+AGENTS.md
+CLAUDE.md
+backup.zip
+.gitignore
+.gitattributes

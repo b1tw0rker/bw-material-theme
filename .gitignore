@@ -1,0 +1,6 @@
+node_modules/
+*.vsix
+backup.zip
+.env
+Notes.txt
+*.psd

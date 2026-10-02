@@ -1,0 +1,49 @@
+{
+  "name": "bw-material-theme",
+  "displayName": "bw-material-theme",
+  "description": "Nick's Personal Theme - A theme with the charme of the sixties.",
+  "version": "0.0.18",
+  "publisher": "BITWORKER",
+  "icon": "bitworker.png",
+  "license": "MIT",
+  "keywords": [
+    "theme",
+    "dark theme",
+    "color theme",
+    "material",
+    "orange",
+    "sixties",
+    "retro"
+  ],
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "scripts": {
+    "build": "npx -y @vscode/vsce package",
+    "deploy": "npx -y @vscode/vsce publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b1tw0rker/bw-material-theme.git"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "galleryBanner": {
+    "color": "#0C1016",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "BW Material - Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/bw-material-theme-color-theme.json"
+      }
+    ]
+  },
+  "homepage": "https://github.com/b1tw0rker/bw-material-theme#readme",
+  "bugs": {
+    "url": "https://github.com/b1tw0rker/bw-material-theme/issues"
+  }
+}
