@@ -1,10 +1,13 @@
-*.psd
-*.vsix
-Notes.txt
 .vscode/**
 .env
+Notes.txt
+backup/**
+dist/**
+design/**
+*.vsix
+*.zip
+*.psd
 AGENTS.md
 CLAUDE.md
-backup.zip
 .gitignore
 .gitattributes

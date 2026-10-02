@@ -15,12 +15,13 @@ Reines **VS-Code-Farbschema** (kein Code, kein Build-Schritt, keine Tests), ver�
 | `package.json` | Extension-Manifest, `version` wird pro Release erhöht. |
 | `CHANGELOG.md` | Release-Notizen, neuester Eintrag oben (`### x.y.z` + `• …`). |
 | `README.md` | Marketplace-Seite; enthält ebenfalls die Versionshistorie → **mit CHANGELOG synchron halten**. |
-| `.vscodeignore` | Hält PSD, `.vsix`, `Notes.txt`, `.env`, `backup.zip`, Agent-Dateien, `.vscode/` aus dem Paket. |
-| `.gitignore` | Hält `.env`, `Notes.txt`, `*.vsix`, `backup.zip` aus Git. |
+| `.vscodeignore` | Hält `backup/`, `dist/`, `design/`, `.env`, `Notes.txt`, Agent-Dateien, `.vscode/` aus dem Paket. |
+| `.gitignore` | Hält `.env`, `Notes.txt`, `backup/`, `dist/`, `design/` aus Git. |
 | `.vscode/launch.json` | F5 = Extension Development Host zum Live-Testen des Themes. |
-| `bitworker.png` | Marketplace-Icon. `VsCode-Snippets.psd` = Grafik-Quelle, nie anfassen. |
-| `*.vsix` | Gebaute Pakete (Artefakte, nicht versioniert). |
-| `backup.zip` | Komplettsicherung des Stands vor 0.0.18 – enthält Zugangsdaten, nie committen. |
+| `bitworker.png` | Marketplace-Icon (muss im Root bleiben, `package.json` verweist darauf). |
+| `design/` | Grafik-Quellen (`VsCode-Snippets.psd`), nie anfassen. Nicht in Git. |
+| `dist/` | Gebaute `.vsix`-Pakete (`npm run build` schreibt hierher). Nicht in Git. |
+| `backup/` | Komplettsicherungen (`backup-pre-0.0.18.zip` = Stand vor 0.0.18, enthält Zugangsdaten). Nicht in Git. Vor größeren Umbauten neue Sicherung hier ablegen. |
 
 Git-Repo: https://github.com/b1tw0rker/bw-material-theme (Branch `main`); `package.json` → `repository`/`bugs`/`homepage` zeigen dorthin.
 
@@ -70,13 +71,13 @@ node -e "const s=require('fs').readFileSync('themes/bw-material-theme-color-them
 3. Eintrag oben in `CHANGELOG.md` **und** im Versionsteil von `README.md` ergänzen (Englisch, Stil `• kurze Beschreibung`).
 4. Paket bauen und Inhalt prüfen – es dürfen nur Theme, `package.json`, README, CHANGELOG, LICENSE, Icon drin sein:
    ```bash
-   npm run build    # = npx -y @vscode/vsce package
+   npm run build    # = vsce package --out dist/ → dist/bw-material-theme-<version>.vsix
    ```
    (`vsce` ist nicht global installiert → immer `npx @vscode/vsce`.)
 5. Veröffentlichen – Token liegt in `.env` als `TOKEN=…`:
    ```bash
    export VSCE_PAT=$(grep '^TOKEN=' .env | cut -d= -f2- | tr -d '\r"')
-   npx -y @vscode/vsce publish --packagePath bw-material-theme-<version>.vsix
+   npx -y @vscode/vsce publish --packagePath dist/bw-material-theme-<version>.vsix
    ```
    Publisher: `BITWORKER`. Token-Fehler `TF400813` = Token abgelaufen/falscher Scope → neues PAT unter dev.azure.com/BITW0RKER (Scope *Marketplace → Manage*, „All accessible organizations“).
 

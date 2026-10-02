@@ -19,8 +19,8 @@
     "vscode": "^1.70.0"
   },
   "scripts": {
-    "build": "npx -y @vscode/vsce package",
-    "deploy": "npx -y @vscode/vsce publish"
+    "build": "npx -y @vscode/vsce package --out dist/",
+    "deploy": "npx -y @vscode/vsce publish --no-dependencies"
   },
   "repository": {
     "type": "git",
