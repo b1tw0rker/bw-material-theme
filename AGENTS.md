@@ -29,6 +29,8 @@ Git-Repo: https://github.com/b1tw0rker/bw-material-theme (Branch `main`); `packa
 
 Neue Farben **aus dieser Palette** wählen, keine fremden Töne erfinden. Transparenz per 8-stelligem Hex (`#E15D1040`).
 
+Herkunft der „Sixties"-Stimmung: https://www.littlegreene.de/anstriche/epoche/farben-der-1960er (verwendet), https://www.etsy.com/de/market/60s_color_palette (nicht verwendet). Weitere Hilfen: https://coder-coder.com/vs-code-theme-color-generator/
+
 | Rolle | Hex |
 |---|---|
 | Akzent / Fokus / Rahmen aktiv / Variablen | `#E15D10` |
@@ -82,6 +84,7 @@ node -e "const s=require('fs').readFileSync('themes/bw-material-theme-color-them
    Publisher: `BITWORKER`. Token-Fehler `TF400813` = Token abgelaufen/falscher Scope → neues PAT unter dev.azure.com/BITW0RKER (Scope *Marketplace → Manage*, „All accessible organizations“).
 
 Lokal testen ohne Publish: F5 (Extension Development Host) oder *Extensions: Install from VSIX…*, danach *Developer: Reload Window*.
+Token-Scopes prüfen: `Ctrl+Shift+P` → *Developer: Inspect Editor Tokens and Scopes*.
 
 ## Bekannte Fallstricke
 
@@ -91,6 +94,16 @@ Lokal testen ohne Publish: F5 (Extension Development Host) oder *Extensions: Ins
 - Gültige `fontStyle`-Werte: `italic`, `bold`, `underline`, `strikethrough` oder `""`. `foreground` muss Hex sein (kein `inherit`).
 - Keys aus Extensions (`gitDecoration.*` → Git, `gitlens.*` → GitLens, `parameterHints.*` → Extension „parameter-hints“) fehlen in der VS-Code-Doku, sind aber gültig.
 - Welche Theme-Farben Claude Code / Codex nutzen: `var(--vscode-…)` in `~/.vscode/extensions/anthropic.claude-code-*` bzw. `openai.chatgpt-*` greppen (`.` im Key ↔ `-` in der CSS-Variable).
+
+## Git: selbstständig committen und pushen
+
+Agenten **committen und pushen selbstständig, ohne Nachfrage**, sobald eine Änderung ein sinnvoll abgeschlossener Schritt ist (Theme-Änderung validiert, Doku angepasst, Aufräumarbeiten fertig).
+
+- Vorher bei Theme-Änderungen die Validierung laufen lassen; nur funktionierenden Stand committen.
+- Kleine, thematisch getrennte Commits mit kurzer englischer Message (Stil der bisherigen Commits, z. B. `Release 0.0.18: …`). Direkt auf `main`, dann `git push`.
+- Nie committen: `.env`, `Notes.txt`, `backup/`, `dist/`, `design/` (stehen in `.gitignore`). Vor dem Commit `git status` prüfen, dass keine Zugangsdaten dabei sind.
+- Kein Force-Push, kein History-Umschreiben ohne ausdrücklichen Auftrag.
+- **Ausnahme:** Marketplace-Veröffentlichung (`vsce publish`) bleibt ein eigener Schritt und passiert nur auf ausdrückliche Anweisung – sie ist nach außen sichtbar und nicht rückholbar.
 
 ## Sicherheit
 
